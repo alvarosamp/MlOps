@@ -4,3 +4,6 @@ venv_package/
 .ipynb_checkpoints
 .ipynb_checkpoints/*
 */.ipynb_checkpoints/*
+mlruns
+dummy
+
