@@ -64,9 +64,9 @@ pip install mlflow
 `pip install chardet`
 
 - Serve the Models with Local REST server
-mlflow models serve -m runs:/<RUN_ID>/model --port 9000
+`mlflow models serve -m runs:/<RUN_ID>/model --port 9000`
 
-mlflow models serve -m /Users/nachiketh/Desktop/author-repo/Complete-MLOps-BootCamp/MLFlow-Manage-ML-Experiments/mlruns/636758781795674813/91ef1ea3f63d40a7a33c4251dd088618/artifacts/RandomForestClassifier --port 9000
+`mlflow models serve -m /Users/nachiketh/Desktop/author-repo/Complete-MLOps-BootCamp/MLFlow-Manage-ML-Experiments/mlruns/636758781795674813/91ef1ea3f63d40a7a33c4251dd088618/artifacts/RandomForestClassifier --port 9000`
 
 
 # Generate Predictions
@@ -109,7 +109,7 @@ mlflow models serve -m /Users/nachiketh/Desktop/author-repo/Complete-MLOps-BootC
 
 http://localhost:9000
 
-```
+```bash
 curl --location 'http://127.0.0.1:9000/invocations' \
 --header 'Content-Type: application/json' \
 --data '{
