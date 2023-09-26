@@ -6,4 +6,4 @@ venv_package/
 */.ipynb_checkpoints/*
 mlruns
 dummy
-
+.DS_Store

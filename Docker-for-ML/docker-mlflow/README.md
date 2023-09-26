@@ -3,8 +3,7 @@
 This directory contains an MLflow project that trains a linear regression model on the UC Irvine
 Wine Quality Dataset. The project uses a Docker image to capture the dependencies needed to run
 training code. Running a project in a Docker environment (as opposed to Conda) allows for capturing
-non-Python dependencies, e.g. Java libraries. In the future, we also hope to add tools to MLflow
-for running Dockerized projects e.g. on a Kubernetes cluster for scale out.
+non-Python dependencies, e.g. Java libraries. 
 
 # Structure of this MLflow Project
 ----------------------------------
@@ -48,7 +47,7 @@ name:
 Note that the name if the image used in the ``docker build`` command, ``mlflow-docker-example``,
 matches the name of the image referenced in the ``MLproject`` file.
 
-Finally, run the example project using ``mlflow run examples/docker -P alpha=0.5``.
+Finally, run the example project using ``mlflow run . -P alpha=0.5``.
 
 .. note::
     If running this example on a Mac with Apple silicon, ensure that Docker Desktop is running and

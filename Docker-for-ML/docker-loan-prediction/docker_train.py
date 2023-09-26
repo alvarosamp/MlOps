@@ -1,7 +1,7 @@
 # Importing the required packages
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn import metrics
@@ -68,7 +68,7 @@ grid_forest = GridSearchCV(
         scoring='accuracy',
         verbose=0
     )
-model_forest = grid_forest.fit(X_train, y_train)
+model_forest = grid_forest.fit(X, y)
 
 joblib.dump(model_forest, 'RF_Loan_model.pkl')
 
@@ -99,7 +99,7 @@ while True:
     else:
         
         # predicting the value
-        predicted_value=model.predict([data])
+        predicted_value=model_forest.predict([data])
         print("/**********************************************************************/")
         if (predicted_value[0]):
             print("\tCongratulations! your loan request is Approved")
