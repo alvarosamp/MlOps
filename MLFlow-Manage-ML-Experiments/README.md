@@ -60,7 +60,7 @@ pip install mlflow
 - install virtualenv
 `pip install virtualenv`
 
-- install chardat
+- install chardet
 `pip install chardet`
 
 - Serve the Models with Local REST server
@@ -151,9 +151,16 @@ LogisticRegression/
     - requriments.txt
 ```
 
-`mlflow server --host 0.0.0.0 --port 5001 --backend-store-uri mysql://root:admin123@localhost/mlflow_db --default-artifact-root $PWD/mlruns`
+- Installation
+`pip install mysqlclient`
+
+-port 5001
+`mlflow server --host 0.0.0.0 --port 5001 --backend-store-uri mysql://root:admin123@localhost/db_mlflow --default-artifact-root $PWD/mlruns`
+
+- port 5000
+`mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri mysql://root:admin123@localhost/db_mlflow --default-artifact-root $PWD/mlruns`
 
 `export MLFLOW_TRACKING_URI=http://0.0.0.0:5001`
 
-`mlflow models serve -m "models:/Prediction_RF/Staging"`
+`mlflow models serve -m "models:/Prediction_Model_RF/Production" -p 1234`
 
