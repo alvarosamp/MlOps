@@ -2,7 +2,8 @@ import joblib
 import streamlit as st
 import numpy as np
 
-model_name = 'RF_Loan_model.joblib'
+#model_name = 'RF_Loan_model.joblib'
+model_name = "https://raw.githubusercontent.com/manifoldailearning/Complete-MLOps-BootCamp/main/Build-ML-App-Streamlit/RF_Loan_model.joblib"
 model = joblib.load(model_name)
 
 def prediction(Gender,Married,Dependents,
