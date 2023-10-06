@@ -17,18 +17,7 @@ The command `uvicorn main:app` refers to:
 
 
 ```json
-{
-  "Gender": 1,
-  "Married": 0,
-  "Dependents": 0,
-  "Education": 0,
-  "Self_Employed": 0,
-  "LoanAmount": 4.98745,
-  "Loan_Amount_Term": 360.0,
-  "Credit_History": 1,
-  "Property_Area": 2,
-  "TotalIncome": 8.698
-}
+Yes
 
 ```
 
