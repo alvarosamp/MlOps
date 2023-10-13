@@ -4,8 +4,10 @@
 
 ```
 sudo su -
-git clone https://github.com/manifoldailearning/Complete-MLOps-BootCamp
-cd Continuous-Monitoring-Prometheus-Grafana/Prometheus-Grafana-Learning/scripts
+git clone https://github.com/manifoldailearning/Prometheus-Grafana-Docs
+cd Prometheus-Grafana-Docs/scripts
+
+chmod u=rwx,g=r,o=r 1-install.sh
 ./1-install.sh
 ps aux | grep prometheus
 sudo service prometheus start
@@ -13,6 +15,7 @@ sudo service prometheus status
 
 cat /etc/prometheus/prometheus.yml
 
+chmod u=rwx,g=r,o=r 3-install-grafana.sh
 ./3-install-grafana.sh
 sudo service grafana-server status
 
@@ -25,8 +28,10 @@ cat /etc/prometheus/prometheus.yml
 ```
 # Install Node Exporter
 - Run the script
+chmod u=rwx,g=r,o=r 2-node-exporter.sh
+./2-node-exporter.sh
 ```
-sudo apt-get install vim
+sudo apt-get install vim -y
 sudo update-alternatives --config vi
 
 vim /etc/prometheus/prometheus.yml
