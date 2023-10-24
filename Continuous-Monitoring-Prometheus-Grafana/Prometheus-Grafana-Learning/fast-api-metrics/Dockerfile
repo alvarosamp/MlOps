@@ -1,19 +1,22 @@
-FROM python:3-alpine
+FROM python:3.10-slim-buster
 
-WORKDIR /usr/src/app
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt ./
-RUN apk --update add --no-cache mariadb-dev gcc musl-dev && \
-    pip install --no-cache-dir -r requirements.txt && \
-    apk del gcc musl-dev
+RUN pip install --upgrade pip 
+#copy to code directory
+COPY . /code 
 
-RUN apk --update add bash && \
-    wget -q -O /wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && \
-    chmod +x /wait-for-it.sh
+#set permissions
 
-COPY . .
+RUN chmod +x /code
 
-EXPOSE 5000
-EXPOSE 8000
+RUN pip install --no-cache-dir --upgrade -r code/requirements.txt
 
-CMD [ "python", "./main.py" ]
+EXPOSE 8005
+
+WORKDIR /code
+
+CMD ["python","main.py"]

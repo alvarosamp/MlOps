@@ -1,4 +1,9 @@
-#Installation Steps for Prometheus
+
+# Querying Prometheus
+https://prometheus.io/docs/prometheus/latest/querying/basics/
+
+
+# Installation Steps for Prometheus
 - Launch an EC2 instance with Ubuntu and run the below commands
 - Open the traffic for all the ports (All Traffic - anywhere ipv4)
 
@@ -43,8 +48,6 @@ vim /etc/prometheus/prometheus.yml
 
 sudo service prometheus restart
 ```
-
-
 ```
 localhost:9090 --> Prometheus
 localhost:3000 --> grafana
@@ -53,71 +56,27 @@ curl localhost:9100/metrics
 ```
 https://pypi.org/project/prometheus-client/
 
+# Install Docker 
+- Run the script
 ```
-./install-docker.sh
+chmod u=rwx,g=r,o=r 4-install-docker.sh
+./4-install-docker.sh
 cd ..
-cd flask-prometheus
-docker-compose up -d
+cd fast-api-metrics
+docker build -t fast-api .
 
-localhost:5000 --> Flask server
-localhost:5000/query --> query
-localhost:8000 --> monitoring
+echo "  - job_name: 'app'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:8005']" >> /etc/prometheus/prometheus.yml
 
-#Run the script
-add-flask-app.sh
+docker run -d -p 8005:8005 fast-api
 
+localhost:8005 --> FastAPI
+localhost:8005/docs --> Documentation
+localhost:8005/metrics --> monitoring
 
 sudo service prometheus restart
 
 docker ps
-```
-
-
-
-# Extra Suggested Activity
-
-
-- setup Alert manager
-# Create  a new file
-
-```
-vim /etc/alertmanager/alertmanager.yml
-
-global:
-  smtp_smarthost: 'localhost:25'
-  smtp_from: 'alertmanager@prometheus.com'
-  smtp_auth_username: ''
-  smtp_auth_password: ''
-  smtp_require_tls: false
-
-templates:
-- '/etc/alertmanager/template/*.tmpl'
-
-route:
-  repeat_interval: 1h
-  receiver: operations-team
-
-receivers:
-- name: 'operations-team'
-  email_configs:
-  - to: 'operations-team+alerts@example.org'
-  slack_configs:
-  - api_url: https://hooks.slack.com/services/XXXXXX/XXXXXX/XXXXXX
-    channel: '#prometheus-course'
-    send_resolved: true
-
-```
-# Do Necessary Edits to Prometheus config file
-
-```
-
-vim /etc/prometheus/prometheus.yml
-alerting:
-  alertmanagers:
-  - static_configs:
-    - targets:
-      - localhost:9093
-
-service prometheus restart
-service prometheus status
 ```
