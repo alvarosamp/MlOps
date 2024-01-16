@@ -166,6 +166,38 @@ git checkout main
 #create v4 in dev & commit to the repo
 git switch main
 git merge dev
+```
 
+## Git Checkouts
 
+```
+git checkout <commit-hash>
+git checkout -b feature
+git switch -c featurev2
+```
+
+## Remote Git Repositories
+
+```
+#create remote repo
+git remote add origin <url>
+git remote
+git remote -v
+git push origin main
+git branch --all
+```
+
+## Cloning and Delete Branches
+```
+git clone <url> <dir-name>
+git clone https://github.com/manifoldailearning/git4mlops.git my-folder
+cd my-folder
+git branch --all
+git checkout -b unit-test
+git push -u origin unit-test
+git checkout main
+git branch -d <branch-name> #delete local branch
+git branch -d unit-test
+git push origin -d unit-test
+git branch --all
 ```
