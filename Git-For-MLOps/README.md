@@ -109,3 +109,63 @@ GitHub
 
 Additional notes: You may skip the overview content and go directly to the numbered list of setps in the [Creating the pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui#creating-the-pull-request) section.
 
+# Install VS Code
+
+https://code.visualstudio.com/download
+
+# Important Commands
+
+## Git Configurations
+
+Git configurations are settings that allow you to customize how Git works. They consist of variables and their values, and they are stored in a couple of different files. To work with Git, you must set a few configuration variables related to user settings.
+
+```
+git version
+git config --global --list
+git config --global user.name "nachiketh"
+git config --global user.email "support@manifoldailearning.in"
+git config --global init.defaultBranch main
+git config --global --list
+
+```
+
+## Working with Local Repo
+
+```
+git init
+git status
+git add file1.py
+git status
+git commit -m "myfirst commit"
+git status
+git log
+```
+## Working with Branches
+
+```
+git branch
+git branch dev
+git log
+git branch
+```
+
+## Switching the Branches
+
+```
+git switch dev
+git checkout dev
+# updated the source code
+git add . 
+git commit -m "v3"
+git log
+git checkout main
+```
+
+## Fast Forward merging
+```
+#create v4 in dev & commit to the repo
+git switch main
+git merge dev
+
+
+```
